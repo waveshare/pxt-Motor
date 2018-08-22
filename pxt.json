@@ -9,7 +9,7 @@
     },
     "files": [
         "README.md",
-        "MotorDriver.ts"
+        "MotorDriver.ts",
         "_locales/zh/Motor-strings.json"
     ],
     "testFiles": [

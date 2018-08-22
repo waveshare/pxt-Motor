@@ -72,7 +72,7 @@ namespace MotorDriver {
     }
 
     //% blockId=ServosTurnZero
-    //% block="Servos %S"
+    //% block="Servos %S Turn Zero"
     //% weight=80
     export function ServosTurnZero(S: Servo): void {
         if (S == Servo.S0)
@@ -84,7 +84,7 @@ namespace MotorDriver {
     }
     
     //% blockId=ServosTurnFull
-    //% block="Servos %S"
+    //% block="Servos %S Turn Full"
     //% weight=79
     export function ServosTurnFull(S: Servo): void {
         if (S == Servo.S0)
