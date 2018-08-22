@@ -96,7 +96,7 @@ namespace MotorDriver {
     }
 
     //% blockId=ServoTurn
-    //% block="Servos %s|index %index|speed1 %speed1| run"
+    //% block="Servos %s|index %index|speed %speed1| run"
     //% weight=70 
     //% speed1.min=0 speed1.max=100
     export function ServoTurn(s: Servo, index: Dir, speed1: number): void {
