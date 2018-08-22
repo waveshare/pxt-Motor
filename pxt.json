@@ -15,5 +15,6 @@
     "testFiles": [
         "test.ts"
     ],
-    "public": false
+    "public": false,
+    "installedVersion": "file:../pxt-Motor"
 }

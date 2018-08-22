@@ -1,14 +1,9 @@
 {
-  "Motor.A|block": "电机A",
-  "Motor.B|block": "电机B",
-  "Servo.S0|block": "舵机1",
-  "Servo.S1|block": "舵机2",
-  "Servo.S2|block": "舵机3",  
-  "DIR.forward|block": "正转",
-  "DIR.backward|block": "反转",
-  "MotorDriver.MotorRun|block": "电机|%M|旋转方向|%Dir|转动速度|%speed",
-  "MotorDriver.MotorStop|block": "电机|%M|停止转动",
-  "MotorDriver.ServosTurnZero|block": "舵机|%S|回转到初始位置",
-  "MotorDriver.ServosTurnFull|block": "舵机|%S|正转到最大位置",
-  "MotorDriver.ServoTurn|block": "舵机|%S|旋转方向|%Dir|转动速度|%speed"
+  "Dir.forward|block": "正转",
+  "Dir.backward|block": "反转",
+  "MotorDriver.MotorRun|block": "电机|%m|旋转方向|%index|转动速度|%speed",
+  "MotorDriver.MotorStop|block": "电机|%m|停止转动",
+  "MotorDriver.ServosTurnZero|block": "舵机|%s|回转到初始位置",
+  "MotorDriver.ServosTurnFull|block": "舵机|%s|正转到最大位置",
+  "MotorDriver.ServoTurn|block": "舵机|%s|旋转方向|%index|转动速度|%speed1"
 }

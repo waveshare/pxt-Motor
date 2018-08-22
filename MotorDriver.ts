@@ -14,7 +14,7 @@ enum Servo {
     S2 = 0x3,
 }
 
-enum DIR {
+enum Dir {
     //% block="Forward"
     forward = 0x1,
     //% block="Backward"
@@ -34,15 +34,15 @@ let S2_PIN = AnalogPin.P2;
 //% weight=20 color=#3333FF icon="\uf11b"
 namespace MotorDriver {
     //% blockId=MotorRun
-    //% block="Motor|%M|Dir %Dir|speed %speed|run"
+    //% block="Motor %m|index %index|speed %speed| run"
     //% weight=100
     //% speed.min=0 speed.max=16
-    export function MotorRun(M: Motor, Dir: DIR, speed: number): void {
+    export function MotorRun(m: Motor, index: Dir, speed: number): void {
         speed = speed * 64 - 1; // map 0 to 1023
 
-        if (M == Motor.A) {
+        if (m == Motor.A) {
             pins.analogWritePin(PWMA, speed)
-            if (Dir == DIR.forward) {
+            if (index == Dir.forward) {
                 pins.digitalWritePin(AIN1, 0)
                 pins.digitalWritePin(AIN2, 1)
             } else {
@@ -51,7 +51,7 @@ namespace MotorDriver {
             }
         } else {
             pins.analogWritePin(PWMB, speed)
-            if (Dir == DIR.forward) {
+            if (index == Dir.forward) {
                 pins.digitalWritePin(BIN1, 0)
                 pins.digitalWritePin(BIN2, 1)
             } else {
@@ -62,52 +62,52 @@ namespace MotorDriver {
     }
 
     //% blockId=MotorStop
-    //% block="Motor |%Motor| Stop"
+    //% block="Motor %Motor| Stop"
     //% weight=90
-    export function MotorStop(M: Motor): void {
-        if (M == Motor.A)
+    export function MotorStop(m: Motor): void {
+        if (m == Motor.A)
             pins.analogWritePin(PWMA, 0)
         else
             pins.analogWritePin(PWMB, 0)
     }
 
     //% blockId=ServosTurnZero
-    //% block="Servos %S Turn Zero"
+    //% block="Servos %s| Turn Zero"
     //% weight=80
-    export function ServosTurnZero(S: Servo): void {
-        if (S == Servo.S0)
+    export function ServosTurnZero(s: Servo): void {
+        if (s == Servo.S0)
             pins.servoSetPulse(S0_PIN, 0)
-        else if (S == Servo.S1)
+        else if (s == Servo.S1)
             pins.servoSetPulse(S1_PIN, 0)
         else
             pins.servoSetPulse(S2_PIN, 0)
     }
     
     //% blockId=ServosTurnFull
-    //% block="Servos %S Turn Full"
+    //% block="Servos %s| Turn Full"
     //% weight=79
-    export function ServosTurnFull(S: Servo): void {
-        if (S == Servo.S0)
+    export function ServosTurnFull(s: Servo): void {
+        if (s == Servo.S0)
             pins.servoSetPulse(S0_PIN, 180)
-        else if (S == Servo.S1)
+        else if (s == Servo.S1)
             pins.servoSetPulse(S1_PIN, 180)
         else
             pins.servoSetPulse(S2_PIN, 180)
     }
 
     //% blockId=ServoTurn
-    //% block="Servos |%S|Dir %Dir|speed %speed|run"
+    //% block="Servos %s|index %index|speed1 %speed1| run"
     //% weight=70 
-    //% speed.min=0 speed.max=100
-    export function ServoTurn(S: Servo, Dir: DIR, speed: number): void {
+    //% speed1.min=0 speed1.max=100
+    export function ServoTurn(s: Servo, index: Dir, speed1: number): void {
         let item = 90
-        if(Dir == DIR.forward)
-            item = (speed * 90) / 100 + 90
+        if(index == Dir.forward)
+            item = (speed1 * 90) / 100 + 90
         else
-            item = 90 - (speed * 90) / 100
-        if (S == Servo.S0)
+            item = 90 - (speed1 * 90) / 100
+        if (s == Servo.S0)
             pins.servoWritePin(S0_PIN, item)
-        else if (S == Servo.S1)
+        else if (s == Servo.S1)
             pins.servoWritePin(S1_PIN, item)
         else
             pins.servoWritePin(S2_PIN, item)
