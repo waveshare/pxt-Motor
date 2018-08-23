@@ -1,9 +1,3 @@
 {
-  "Dir.forward|block": "正转",
-  "Dir.backward|block": "反转",
-  "MotorDriver.MotorRun|block": "电机|%m|旋转方向|%index|转动速度|%speed",
-  "MotorDriver.MotorStop|block": "电机|%m|停止转动",
-  "MotorDriver.ServosTurnZero|block": "舵机|%s|回转到初始位置",
-  "MotorDriver.ServosTurnFull|block": "舵机|%s|正转到最大位置",
-  "MotorDriver.ServoTurn|block": "舵机|%s|旋转方向|%index|转动速度|%speed1"
+  "MotorDriver.MotorRun|block": "电机 %m|旋转方向 %index|速度 %speed"
 }

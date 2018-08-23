@@ -31,10 +31,9 @@ let S0_PIN = AnalogPin.P0;
 let S1_PIN = AnalogPin.P1;
 let S2_PIN = AnalogPin.P2;
 
-//% weight=20 color=#3333FF icon="\uf11b"
+//% weight=20 color=#3333FF icon="\uf1b9"
 namespace MotorDriver {
-    //% blockId=MotorRun
-    //% block="Motor %m|index %index|speed %speed| run"
+    //% blockId=MotorDriver_MotorRun block="Motor %m|index %index|speed %speed"
     //% weight=100
     //% speed.min=0 speed.max=16
     export function MotorRun(m: Motor, index: Dir, speed: number): void {
