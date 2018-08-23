@@ -10,7 +10,7 @@
     "files": [
         "README.md",
         "MotorDriver.ts",
-        "_locales/zh/Motor-strings.json"
+        "_locales/zh/pxt-Motor-strings.json"
     ],
     "testFiles": [
         "test.ts"
