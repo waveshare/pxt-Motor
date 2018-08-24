@@ -12,11 +12,8 @@ MotorDriver.ServosTurnZero(Servo.S0)
 //Turn the steering gear S0 to the maximum position
 MotorDriver.ServosTurnFull(Servo.S0)
 
-//Steering gear S0 turns positive and set speed
-MotorDriver.ServoTurn(Servo.S0, Dir.forward, 0)
-
 //Stop Servo
 MotorDriver.ServoStop(Servo.S0)
 
 //Servo Turn Angle
-MotorDriver.ServoTurnAngle(Servo.S1, 180, 2)
+MotorDriver.ServoTurnAngle(Servo.S1, 180)

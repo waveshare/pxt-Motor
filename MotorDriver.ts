@@ -98,27 +98,6 @@ namespace MotorDriver {
             pins.servoWritePin(S2_PIN, 180)
     }
 
-    /**
-	 * Servo Run
-	 * @param speed1 [0-100] speed of Motor; eg: 100, 0, 100
-	*/
-    //% blockId=ServoTurn
-    //% block="Servos %s|index %index|speed %speed1| run"
-    //% weight=70 
-    //% speed1.min=0 speed1.max=100
-    export function ServoTurn(s: Servo, index: Dir, speed1: number): void {
-        let item = 90
-        if (index == Dir.forward)
-            item = (speed1 * 90) / 100 + 90
-        else
-            item = 90 - (speed1 * 90) / 100
-        if (s == Servo.S0)
-            pins.servoWritePin(S0_PIN, item)
-        else if (s == Servo.S1)
-            pins.servoWritePin(S1_PIN, item)
-        else
-            pins.servoWritePin(S2_PIN, item)
-    }
 
     //% blockId=ServoStop
     //% block="Servos %s| Stop"
@@ -132,30 +111,21 @@ namespace MotorDriver {
             pins.servoSetPulse(S2_PIN, 0)
     }
 
-    function ServoSetpwm(pin: DigitalPin, value: number, factor: number): void {
-        let i = 0
-        for (i = 0; i < value * factor; i++) {
-            pins.digitalWritePin(pin, 0)
-            control.waitMicros(50)
-            pins.digitalWritePin(pin, 1)
-            control.waitMicros(1950)
-        }
-    }
     /**
 	 * Servo TurnAngle
 	 * @param angle [0-180] speed of Motor; eg: 180, 0, 180
-     * @param factor [0-10] speed of Motor; eg: 2, 0, 10
 	*/
     //% blockId=ServoTurnAngle
-    //% block="Servos %s| Turn Angle %angle| Factor %factor"
+    //% block="Servos %s| Turn Angle %angle"
     //% weight=60 
-    export function ServoTurnAngle(s: Servo, angle: number, factor: number): void {
+    //% angle.min=0 angle.max=180
+    export function ServoTurnAngle(s: Servo, angle: number): void {
         if (s == Servo.S0)
-            ServoSetpwm(DigitalPin.P0, angle, factor)
+            pins.servoSetPulse(S0_PIN, angle)
         else if (s == Servo.S1)
-            ServoSetpwm(DigitalPin.P1, angle, factor)
+            pins.servoSetPulse(S1_PIN, angle)
         else
-            ServoSetpwm(DigitalPin.P2, angle, factor)
+            pins.servoSetPulse(S2_PIN, angle)
     }
 
 }
