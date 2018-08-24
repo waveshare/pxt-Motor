@@ -9,6 +9,7 @@
   "MotorDriver.ServosTurnFull|block": "舵机 %s| 正转到最大位置",
   "MotorDriver.ServosTurnZero|block": "舵机 %s| 回转到初始位置",
   "MotorDriver.ServoStop|block": "舵机 %s| 停止",
+  "MotorDriver.ServoTurnAngle|block": "舵机 %s| 正转角度 %angle| 比例 %factor",
   "Servo.S0|block": "S0",
   "Servo.S1|block": "S1",
   "Servo.S2|block": "S2",

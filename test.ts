@@ -18,3 +18,5 @@ MotorDriver.ServoTurn(Servo.S0, Dir.forward, 0)
 //Stop Servo
 MotorDriver.ServoStop(Servo.S0)
 
+//Servo Turn Angle
+MotorDriver.ServoTurnAngle(Servo.S1, 180, 2)

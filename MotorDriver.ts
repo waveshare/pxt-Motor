@@ -132,4 +132,26 @@ namespace MotorDriver {
             pins.servoSetPulse(S2_PIN, 0)
     }
 
+    function ServoSetpwm(pin: DigitalPin, value: number, factor: number): void {
+        let i = 0
+        for (i = 0; i < value * factor; i++) {
+            pins.digitalWritePin(pin, 0)
+            control.waitMicros(50)
+            pins.digitalWritePin(pin, 1)
+            control.waitMicros(1950)
+        }
+    }
+
+    //% blockId=ServoTurnAngle
+    //% block="Servos %s| Turn Angle %angle| Factor %factor"
+    //% weight=60 
+    export function ServoTurnAngle(s: Servo, angle: number, factor: number): void {
+        if (s == Servo.S0)
+            ServoSetpwm(DigitalPin.P0, angle, factor)
+        else if (s == Servo.S1)
+            ServoSetpwm(DigitalPin.P1, angle, factor)
+        else
+            ServoSetpwm(DigitalPin.P2, angle, factor)
+    }
+
 }
