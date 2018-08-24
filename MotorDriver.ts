@@ -141,7 +141,11 @@ namespace MotorDriver {
             control.waitMicros(1950)
         }
     }
-
+    /**
+	 * Servo TurnAngle
+	 * @param angle [0-180] speed of Motor; eg: 180, 0, 180
+     * @param factor [0-10] speed of Motor; eg: 2, 0, 10
+	*/
     //% blockId=ServoTurnAngle
     //% block="Servos %s| Turn Angle %angle| Factor %factor"
     //% weight=60 
