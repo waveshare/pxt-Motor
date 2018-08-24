@@ -33,6 +33,10 @@ let S2_PIN = AnalogPin.P2;
 
 //% weight=20 color=#3333FF icon="\uf1b9"
 namespace MotorDriver {
+    /**
+	 * Motor Run
+	 * @param speed [0-16] speed of Motor; eg: 10, 0, 16
+	*/
     //% blockId=MotorDriver_MotorRun block="Motor %m|index %index|speed %speed"
     //% weight=100
     //% speed.min=0 speed.max=16
@@ -75,32 +79,36 @@ namespace MotorDriver {
     //% weight=80
     export function ServosTurnZero(s: Servo): void {
         if (s == Servo.S0)
-            pins.servoSetPulse(S0_PIN, 0)
+            pins.servoWritePin(S0_PIN, 0)
         else if (s == Servo.S1)
-            pins.servoSetPulse(S1_PIN, 0)
+            pins.servoWritePin(S1_PIN, 0)
         else
-            pins.servoSetPulse(S2_PIN, 0)
+            pins.servoWritePin(S2_PIN, 0)
     }
-    
+
     //% blockId=ServosTurnFull
     //% block="Servos %s| Turn Full"
     //% weight=79
     export function ServosTurnFull(s: Servo): void {
         if (s == Servo.S0)
-            pins.servoSetPulse(S0_PIN, 180)
+            pins.servoWritePin(S0_PIN, 180)
         else if (s == Servo.S1)
-            pins.servoSetPulse(S1_PIN, 180)
+            pins.servoWritePin(S1_PIN, 180)
         else
-            pins.servoSetPulse(S2_PIN, 180)
+            pins.servoWritePin(S2_PIN, 180)
     }
 
+    /**
+	 * Servo Run
+	 * @param speed1 [0-100] speed of Motor; eg: 100, 0, 100
+	*/
     //% blockId=ServoTurn
     //% block="Servos %s|index %index|speed %speed1| run"
     //% weight=70 
     //% speed1.min=0 speed1.max=100
     export function ServoTurn(s: Servo, index: Dir, speed1: number): void {
         let item = 90
-        if(index == Dir.forward)
+        if (index == Dir.forward)
             item = (speed1 * 90) / 100 + 90
         else
             item = 90 - (speed1 * 90) / 100
@@ -110,6 +118,18 @@ namespace MotorDriver {
             pins.servoWritePin(S1_PIN, item)
         else
             pins.servoWritePin(S2_PIN, item)
+    }
+
+    //% blockId=ServoStop
+    //% block="Servos %s| Stop"
+    //% weight=69 
+    export function ServoStop(s: Servo): void {
+        if (s == Servo.S0)
+            pins.servoSetPulse(S0_PIN, 0)
+        else if (s == Servo.S1)
+            pins.servoSetPulse(S1_PIN, 0)
+        else
+            pins.servoSetPulse(S2_PIN, 0)
     }
 
 }
